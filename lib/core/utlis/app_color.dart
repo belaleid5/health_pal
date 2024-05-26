@@ -5,5 +5,6 @@ import 'package:flutter/material.dart';
   static Color greyColor =const Color( 0xff6B7280);
   static Color blueColor = const Color(0xff1C64F2);
   static Color whiteColor = const Color(0xffFFFFFF);
+  static Color textFormColor = const Color(0xffD1D5DB);
 
 }

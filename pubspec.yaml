@@ -38,6 +38,13 @@ dependencies:
   go_router: ^14.0.2
   flutter_svg: ^2.0.10+1
   smooth_page_indicator: ^1.1.0
+  shared_preferences: ^2.2.3
+  get_it: ^7.7.0
+  flutter_bloc: ^8.1.5
+  equatable: ^2.0.5
+  firebase_auth: ^4.19.6
+  firebase_core: ^2.31.1
+  google_sign_in: ^6.2.1
 
 dev_dependencies:
   flutter_test:

@@ -17,6 +17,6 @@ class AppStrings {
   static const or = "Or";
   static const signInWithGoogle = "Continue with Google";
   static const signInWithFacebook = "Continue with Facebook";
-  static const haveAnAccount = "Do you have an account ? Sign In";
+  static const haveAnAccount = "Do you have an account ? ";
   static const signIn = "Sign In";
 }
