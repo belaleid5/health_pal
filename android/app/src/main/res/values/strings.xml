@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="facebook_app_id">466291785910544</string>
+    <string name="fb_login_protocol_scheme">fb466291785910544</string>
+    <string name="facebook_client_token">8e1bb745f6729e975953b24500982306</string>
+    <string name="app_name">"Belal_Eid"</string>
+
+</resources>
+
+

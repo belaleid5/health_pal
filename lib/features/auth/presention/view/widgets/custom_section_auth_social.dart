@@ -28,7 +28,7 @@ class CustomSectionAuthSocial extends StatelessWidget {
               color: AppColors.primaryColor,
             ),
           );
-        }else if(state is SigninFailureState){
+        } else if (state is SigninFailureState) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.errMessage),
@@ -37,8 +37,6 @@ class CustomSectionAuthSocial extends StatelessWidget {
           );
         }
       },
-
-      
       builder: (context, state) {
         AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
         return Column(
@@ -52,7 +50,10 @@ class CustomSectionAuthSocial extends StatelessWidget {
               imageSvg: AppAssets.assetsImagesGoogleOriginal,
             ),
             verticalSpace(10),
-            const CustomAuthSocial(
+            CustomAuthSocial(
+              onPressed: () {
+                authCubit.signInWithFacebook();
+              },
               titleAuth: AppStrings.signInWithFacebook,
               imageSvg: AppAssets.assetsImagesFacebook,
             ),
