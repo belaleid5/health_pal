@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:health_pal/core/database/cached/cach_helper.dart';
 import 'package:health_pal/core/functions/app_navgate.dart';
@@ -18,8 +19,12 @@ class _SplashViewState extends State<SplashView> {
   final   inBoardingVisited =  
   getIt<CacheHelper>().getData(key: "inBoardingVisited") ?? false;
     if(inBoardingVisited == true){
-            delayedNavagte(context,"/signUpView");
-
+       FirebaseAuth.instance.currentUser == null
+          ? delayedNavagte(context, "/signInView")
+          : FirebaseAuth.instance.currentUser!.emailVerified == true
+              ? delayedNavagte(context, "/homeView")
+              : delayedNavagte(context, "/signInView");
+                
     }else{
          delayedNavagte(context,"/onBoarding");
  

@@ -14,7 +14,8 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-       fixedSize: const Size(400, 48),        foregroundColor: Colors.white,
+       fixedSize: const Size(400, 48),     
+          foregroundColor: AppColors.whiteColor,
         backgroundColor: AppColors.primaryColor, // لون النص
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(32), // شكل الزر

@@ -17,7 +17,7 @@ class AuthCubit extends Cubit<AuthState> {
   GlobalKey<FormState> signinFormKey = GlobalKey();
   GlobalKey<FormState> forgotPasswordFormKey = GlobalKey();
 
-  Future<void> signUpWithEmailAndPassword() async {
+  Future<void> signUpWithEmailAndPassword(BuildContext context) async {
     try {
       emit(SignupLoadingState());
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -25,7 +25,8 @@ class AuthCubit extends Cubit<AuthState> {
         password: password!,
       );
       /* await addUserProfile();*/
-      // await verifyEmail();
+      await verifyEmail();
+      customNavgateReplacement(context, '/signInView');
       emit(SignupSuccessState());
     } on FirebaseAuthException catch (e) {
       _signUpHandleException(e);
@@ -71,7 +72,7 @@ class AuthCubit extends Cubit<AuthState> {
         await googleSignIn.signIn();
 
     if (googleSignInAccount != null) {
-      emit(SignupLoadingState());
+      emit(SigninLoadingSocialState());
       final GoogleSignInAuthentication googleSignInAuthentication =
           await googleSignInAccount.authentication;
 
@@ -85,14 +86,16 @@ class AuthCubit extends Cubit<AuthState> {
             await auth.signInWithCredential(credential);
 
         user = userCredential.user;
-        emit(SignupSuccessState());
+        emit(SigninSuccessSocialState());
       } on FirebaseAuthException catch (e) {
         if (e.code == 'account-exists-with-different-credential') {
           _signUpHandleException(e);
         } else if (e.code == 'invalid-credential') {
           _signUpHandleException(e);
         }
-      } catch (e) {}
+      } catch (e) {
+        emit(SigninFailureSocialState(errMessage: e.toString()));
+      }
     }
 
     return user;
@@ -101,26 +104,25 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> signInWithFacebook() async {
     var _auth;
     try {
-      emit(SignupLoadingState());
+      emit(SigninLoadingSocialState());
 
       final LoginResult result = await FacebookAuth.instance.login();
       switch (result.status) {
         case LoginStatus.success:
           final AuthCredential facebookCredential =
               FacebookAuthProvider.credential(result.accessToken!.tokenString);
-          final AuthCredential authCredential =
-              _auth.signInWithCredential(facebookCredential);
-          return emit(SignupLoadingState());
+          _auth.signInWithCredential(facebookCredential);
+          return emit(SigninSuccessSocialState());
 
         case LoginStatus.cancelled:
-          return emit(SigninCancalledState());
+          return emit(SigninCancalledSocialState());
         case LoginStatus.failed:
-          return emit(SignupFailureState(errMessage: state.toString()));
+          return emit(SigninFailureSocialState(errMessage: state.toString()));
         default:
-          return null;
+          return;
       }
-    } on FirebaseAuthException catch (e) {
-      throw e;
+    } on FirebaseAuthException {
+      rethrow;
     }
   }
 
