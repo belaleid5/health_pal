@@ -57,6 +57,8 @@ class AppRouter {
           );
         },
       ),
+
+
       GoRoute(
         path: '/homeView',
         builder: (BuildContext context, GoRouterState state) {

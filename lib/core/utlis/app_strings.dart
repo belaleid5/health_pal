@@ -18,8 +18,10 @@ class AppStrings {
   static const yourEmail = "Your Email";
   static const password = "Password";
   static const forgetpassword = "Forget Password ?";
-  static const subTitlepassword = "Enter your Email, we will send you a verification code.";
+  static const subTitlepassword = "Enter your Email, we will send Resset Password.";
   static const send = "Send";
+  static const resetPassword = "Reset Password";
+  static const veryfiyCode = "Veryfiy Code";
   static const or = "Or";
   static const signInWithGoogle = "Continue with Google";
   static const signInWithFacebook = "Continue with Facebook";

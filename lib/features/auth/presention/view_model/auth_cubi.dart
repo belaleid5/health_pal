@@ -4,7 +4,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:health_pal/core/functions/app_navgate.dart';
 import 'package:health_pal/features/auth/presention/view_model/auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
@@ -12,6 +11,7 @@ class AuthCubit extends Cubit<AuthState> {
   String? name;
   String? emailAddress;
   String? password;
+
   bool? obscurePasswordTextValue = true;
   GlobalKey<FormState> signupFormKey = GlobalKey();
   GlobalKey<FormState> signinFormKey = GlobalKey();
@@ -26,7 +26,6 @@ class AuthCubit extends Cubit<AuthState> {
       );
       /* await addUserProfile();*/
       await verifyEmail();
-      customNavgateReplacement(context, '/signInView');
       emit(SignupSuccessState());
     } on FirebaseAuthException catch (e) {
       _signUpHandleException(e);
@@ -51,6 +50,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> verifyEmail() async {
     await FirebaseAuth.instance.currentUser!.sendEmailVerification();
+    FirebaseAuth.instance.currentUser!.uid;
   }
 
   void obscurePasswordText() {
@@ -152,7 +152,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  Future<void> resetPasswordWithLink() async {
+  Future<void> sendPasswordResetEmail() async {
     try {
       emit(ResetPasswordLoadingState());
       await FirebaseAuth.instance.sendPasswordResetEmail(email: emailAddress!);

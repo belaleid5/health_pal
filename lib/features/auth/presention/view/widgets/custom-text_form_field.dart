@@ -12,23 +12,27 @@ class CustomTextFormField extends StatelessWidget {
     this.icon,
     this.validator,
     this.keyboardType,
-    this.onPressed, this.obscureText, this.onChanged,
+    this.onPressed,
+    this.obscureText,
+    this.onChanged, this.controller,
   });
 
   final String hint;
   final String label;
   final IconData? icon;
   final String? Function(String?)? validator;
-  final  Function(String?)? onChanged;
+  final Function(String?)? onChanged;
   final TextInputType? keyboardType;
+  final TextEditingController? controller;
   final void Function()? onPressed;
-  final  bool? obscureText;
+  final bool? obscureText;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: TextFormField(
+        controller: controller,
         obscureText: obscureText ?? false,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         onChanged: onChanged,
