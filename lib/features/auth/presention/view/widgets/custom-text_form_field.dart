@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import 'package:health_pal/core/utlis/app_color.dart';
@@ -14,24 +13,32 @@ class CustomTextFormField extends StatelessWidget {
     this.keyboardType,
     this.onPressed,
     this.obscureText,
-    this.onChanged, this.controller,
+    this.onChanged,
+    this.controller,
+    this.onTap,
+    this.readOnly, this.icongender,
   });
 
   final String hint;
   final String label;
   final IconData? icon;
   final String? Function(String?)? validator;
+  final void Function()? onTap;
   final Function(String?)? onChanged;
   final TextInputType? keyboardType;
   final TextEditingController? controller;
   final void Function()? onPressed;
   final bool? obscureText;
+  final bool? readOnly;
+  final Widget ?icongender;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: TextFormField(
+        readOnly: readOnly ?? false,
+        onTap: onTap,
         controller: controller,
         obscureText: obscureText ?? false,
         autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -45,7 +52,7 @@ class CustomTextFormField extends StatelessWidget {
           hintStyle: AppStyle.interText500Style16
               .copyWith(color: AppColors.textFormColor),
           prefixIcon: IconButton(
-            icon: Icon(icon),
+            icon:  icongender ?? Icon(icon),
             color: AppColors.textFormColor,
             onPressed: onPressed,
           ),

@@ -84,6 +84,7 @@ class AppAssets {
   /// Assets for assetsImagesOnboarding2
   /// assets/images/onboarding2.png
   static const String assetsImagesOnboarding2 = "assets/images/onboarding2.png";
+  static const String assetsCircalrAvatar = "assets/images/profile-circle.png";
 
   /// Assets for assetsImagesSuccessImage
   /// assets/images/success_image.png

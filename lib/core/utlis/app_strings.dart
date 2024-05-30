@@ -17,11 +17,20 @@ class AppStrings {
   static const yourName = "Your Name";
   static const yourEmail = "Your Email";
   static const password = "Password";
+
   static const forgetpassword = "Forget Password ?";
   static const subTitlepassword = "Enter your Email, we will send Resset Password.";
   static const send = "Send";
+  static const save = "save";
+  static const nickName = "NickName";
+  static const date = "Date of Birth";
+  static const gender = "Gender";
+
   static const resetPassword = "Reset Password";
   static const veryfiyCode = "Veryfiy Code";
+  static const titleProfile = " Fill Your Profile";
+
+
   static const or = "Or";
   static const signInWithGoogle = "Continue with Google";
   static const signInWithFacebook = "Continue with Facebook";

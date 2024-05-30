@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:health_pal/core/functions/app_navgate.dart';
-import 'package:health_pal/core/functions/app_spacing.dart';
 import 'package:health_pal/core/utlis/app_strings.dart';
 import 'package:health_pal/features/auth/presention/view/widgets/custom-section_logo.dart';
 import 'package:health_pal/features/auth/presention/view/widgets/custom_or_text.dart';

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:health_pal/features/auth/presention/view/forget_password._view.dart';
 import 'package:health_pal/features/auth/presention/view/log_in_view.dart';
 import 'package:health_pal/features/auth/presention/view/create_account_view.dart';
+import 'package:health_pal/features/auth/presention/view/profile_view.dart';
 import 'package:health_pal/features/auth/presention/view_model/auth_cubi.dart';
 import 'package:health_pal/features/home/presention/view/home_view.dart';
 import 'package:health_pal/features/onBoarding/presention/views/onBoarding_view.dart';
@@ -15,7 +16,7 @@ class AppRouter {
       GoRoute(
         path: '/',
         builder: (BuildContext context, GoRouterState state) {
-          return const SplashView();
+          return const ProfileView();
         },
       ),
       GoRoute(
@@ -57,7 +58,12 @@ class AppRouter {
           );
         },
       ),
-
+//  GoRoute(
+//         path: '/prfile',
+//         builder: (BuildContext context, GoRouterState state) {
+//           return const ProfileView();
+//         },
+//       ),
 
       GoRoute(
         path: '/homeView',
